@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zeeshan - Creative Portfolio</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Base Styles */
@@ -1069,7 +1070,6 @@
     .footer-logo {
       height: 40px;
       margin-bottom: 2rem;
-      filter: invert(1);
     }
     /* Glowing/Pulsing Animation */
 .pulse-glow {
@@ -1378,24 +1378,24 @@
       <div class="nav-button-wrapper">
         <nav class="nav-menu">
           <div class="nav-link-wrapper">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link move-down hide-on-tab">Home</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#home" class="nav-link move-down hide-on-tab">Home</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link move-down hide-on-tab">About</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#about" class="nav-link move-down hide-on-tab">About</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#" class="nav-link">Services</a>
-            <a href="#" class="nav-link move-down hide-on-tab">Services</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#services" class="nav-link move-down hide-on-tab">Services</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#" class="nav-link">Project</a>
-            <a href="#" class="nav-link move-down hide-on-tab">Project</a>
+            <a href="#projects" class="nav-link">Project</a>
+            <a href="#projects" class="nav-link move-down hide-on-tab">Project</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#" class="nav-link">Contact</a>
-            <a href="#" class="nav-link move-down hide-on-tab">Contact</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#contact" class="nav-link move-down hide-on-tab">Contact</a>
           </div>
         </nav>
       </div>
@@ -1409,11 +1409,11 @@
         
         <!-- Mobile navigation menu -->
         <div class="mobile-nav-menu">
-          <a href="#" class="mobile-nav-link">Home</a>
-          <a href="#" class="mobile-nav-link">About</a>
-          <a href="#" class="mobile-nav-link">Services</a>
-          <a href="#" class="mobile-nav-link">Project</a>
-          <a href="#" class="mobile-nav-link">Contact</a>
+          <a href="#home" class="mobile-nav-link">Home</a>
+          <a href="#about" class="mobile-nav-link">About</a>
+          <a href="#services" class="mobile-nav-link">Services</a>
+          <a href="#projects" class="mobile-nav-link">Project</a>
+          <a href="#contact" class="mobile-nav-link">Contact</a>
         </div>
       </div>
     </div>
@@ -1473,7 +1473,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
   
 
   <!-- Hero Section -->
-  <section class="hero-section">
+  <section id="home" class="hero-section">
     <div class="container">
       <div class="hero-wrapper">
         <h5>Muhammad Zeeshan Mehsud</h5>
@@ -1583,7 +1583,8 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
   
             
             <!-- Featured Project -->
-            <section class="project">
+            <section id="projects" class="project">
+
               <!-- Animated Projects Header -->
               <div class="project-header">
                 <div class="scroll-box">
@@ -1638,7 +1639,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
 
 
   <!-- CTA Section -->
-  <section class="section">
+  <section id="contact" class="section">
     <div class="container padding-4-5rem">
       <div class="cta-block" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
         <h2 class="cta-large">Let's Work <br>Together</h2>
@@ -1657,9 +1658,11 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
     <div class="container padding-2rem">
       <div class="footer-top">
         <div class="footer-block">
-          <img src="shan.png" alt="logo" class="footer-logo">
-          <p class="font-white">I design and build digital experiences. 
-            Feel free to reach out for collaborations or just to say hello!</p>
+          <a href="/" class="logo-link-wrapper logo-wrapper" style="background-color: white; border-radius: 3rem; padding: 0.5rem 1rem; display: inline-block; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+            <img src="shan.png" alt="logo" class="logo" style="height: 40px; display: block;">
+          </a>
+          <p class="font-white">I design and build digital experiences, 
+            feel free to reach out for collaborations or just for consultation</p>
             <div class="socials-wrapper">
               <a href="https://www.linkedin.com/in/zeeshan-khan-mehsud-6a84b9242/" target="_blank" rel="noopener noreferrer">
                 <svg class="social-icon pulse-glow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1677,20 +1680,24 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
           <div class="footer-wrapper">
             <h5 class="font-white">Menu</h5>
             <div class="footer-link-wrapper">
-              <a href="#" class="footer-link">Home</a>
-              <a href="#" class="footer-link move-up">Home</a>
+              <a href="#home" class="footer-link">Home</a>
+              <a href="#home" class="footer-link move-up">Home</a>
             </div>
             <div class="footer-link-wrapper">
-              <a href="#" class="footer-link">About</a>
-              <a href="#" class="footer-link move-up">About</a>
+              <a href="#about" class="footer-link">About</a>
+              <a href="#about" class="footer-link move-up">About</a>
             </div>
             <div class="footer-link-wrapper">
-              <a href="#" class="footer-link">Works</a>
-              <a href="#" class="footer-link move-up">Works</a>
+              <a href="#services" class="footer-link">Services</a>
+              <a href="#services" class="footer-link move-up">Services</a>
             </div>
             <div class="footer-link-wrapper">
-              <a href="#" class="footer-link">Contact</a>
-              <a href="#" class="footer-link move-up">Contact</a>
+              <a href="#projects" class="footer-link">Project</a>
+              <a href="#projects" class="footer-link move-up">Project</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#contact" class="footer-link">Contact</a>
+              <a href="#contact" class="footer-link move-up">Contact</a>
             </div>
           </div>
           <div class="footer-wrapper">
