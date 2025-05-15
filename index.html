@@ -1364,6 +1364,73 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Add these to your existing CSS */
+@keyframes expandFromCenter {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animations to navbar elements */
+.nav-container {
+  overflow: hidden; /* Keeps animations contained */
+}
+
+.logo-wrapper {
+  animation: expandFromCenter 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  transform-origin: center;
+}
+
+.nav-button-wrapper {
+  animation: slideInFromRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+}
+
+.menu-button {
+  animation: slideInFromRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+}
+
+/* Delay individual nav links for a staggered effect */
+.nav-link-wrapper {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.nav-link-wrapper:nth-child(1) { animation-delay: 0.4s; }
+.nav-link-wrapper:nth-child(2) { animation-delay: 0.5s; }
+.nav-link-wrapper:nth-child(3) { animation-delay: 0.6s; }
+.nav-link-wrapper:nth-child(4) { animation-delay: 0.7s; }
+.nav-link-wrapper:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </style>
 </head>
 
@@ -1554,7 +1621,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
                   
                   <div class="service-card">
                     <div class="service-icon">
-                      <img src="https://cdn.prod.website-files.com/66f629d681ac33b5c79a812c/66f629d681ac33b5c79a816d_Testimonial-1.jpg" alt="development icon">
+                      <img src="service-2.jpg" alt="development icon">
                     </div>
                     <h3 class="service-title">UI/UX Implementation</h3>
                     <p class="service-description">Responsive interfaces with optimized performance. Accessibility-focused designs for all devices.</p>
@@ -1563,7 +1630,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
                   <!-- Bottom Row -->
                   <div class="service-card">
                     <div class="service-icon">
-                      <img src="https://cdn.prod.website-files.com/66f629d681ac33b5c79a812c/66f629d681ac33b5c79a8161_Sticker-Mockup-2.jpg" alt="marketing icon">
+                      <img src="service-4.jpg" alt="marketing icon">
                     </div>
                     <h3 class="service-title">Backend API Services</h3>
                     <p class="service-description">Secure RESTful APIs with JWT authentication. Cloud deployment on AWS/DigitalOcean.</p>
@@ -1571,7 +1638,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
                   
                   <div class="service-card">
                     <div class="service-icon">
-                      <img src="https://cdn.prod.website-files.com/66f629d681ac33b5c79a812c/66f629d681ac33b5c79a8167_Project-2.jpg" alt="design icon">
+                      <img src="service-3.jpg" alt="design icon">
                     </div>
                     <h3 class="service-title">DevOps Automation</h3>
                     <p class="service-description">CI/CD pipelines with Docker containers. Automated testing and deployment workflows.</p>
@@ -1876,6 +1943,33 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
       observer.observe(element);
     });
   });
+  // Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Reset animations for elements that might be cached
+  const animatedElements = [
+    document.querySelector('.logo-wrapper'),
+    document.querySelector('.nav-button-wrapper'),
+    document.querySelector('.menu-button'),
+    ...document.querySelectorAll('.nav-link-wrapper')
+  ];
+  
+  // Trigger reflow to restart animations
+  animatedElements.forEach(el => {
+    if (el) {
+      el.style.animation = 'none';
+      void el.offsetWidth; // Trigger reflow
+      el.style.animation = '';
+    }
+  });
+  
+  // For mobile menu links (if you want them animated too)
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  mobileLinks.forEach((link, index) => {
+    link.style.opacity = '0';
+    link.style.transform = 'translateY(20px)';
+    link.style.animation = `fadeInUp 0.5s ease-out ${0.4 + index * 0.1}s forwards`;
+  });
+});
 </script>
 <!-- your entire page content -->
   
