@@ -37,13 +37,10 @@
     }
 
     .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  position: relative; /* Add positioning context */
-  z-index: 1; /* Ensure main content is above sidebars */
-}
-
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
     /* Typography */
     h1, h2, h3, h4, h5 {
@@ -627,183 +624,96 @@
 }
     /* Works Section */
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  
-  body {
-    background-color: #000;
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  
-  .padding-1rem {
-    padding: 1rem;
-  }
-  
-  .space-4rem {
-    height: 4rem;
-  }
-  
-  .flex {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Container styles */
+        
+        /* Utilities */
+        .padding-1rem {
+            padding: 1rem;
+        }
+        
+        .space-4rem {
+            height: 4rem;
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Variables */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Works Title Animation */
+        .works-title-wrapper {
+            position: relative;
+            height: 20vh;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .sliding-text-container {
+            width: 300%;
+            display: flex;
+            position: absolute;
+            animation: slideText 20s linear infinite;
+        }
+        
+        @keyframes slideText {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .works-title {
+            font-size: 12rem;
+            white-space: nowrap;
+            margin-right: 2rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        
+        .outline-white {
+            -webkit-text-stroke: 2px white;
+            color: transparent;
+        }
+        
+        /* Projects Section */
+        .background-black {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
+        }
+        
+        .projects-container {
     display: flex;
     justify-content: center;
-  }
-  
-  :root {
-    --primary-color: #000;
-    --secondary-color: #fff;
-    --transition: all 0.3s ease;
-  }
-  
-  .works-title-wrapper {
-    position: relative;
-    height: 20vh;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
     width: 100%;
-    overflow: hidden;
-    margin-bottom: 2rem;
-  }
-  
-  .sliding-text-container {
-    width: 300%;
-    display: flex;
-    position: absolute;
-    animation: slideText 20s linear infinite;
-  }
-  
-  @keyframes slideText {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .works-title {
-    font-size: 12rem;
-    white-space: nowrap;
-    margin-right: 2rem;
-    font-weight: 900;
-    flex-shrink: 0;
-  }
-  
-  .outline-white {
-    -webkit-text-stroke: 2px white;
-    color: transparent;
-  }
-  
-  .background-black {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 3rem 0;
-  }
-  
-  .projects-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Add this */
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: 80vh; /* Optional: makes sure there's vertical space to center */
-  position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem; /* Reduced side padding for small screens */
 }
-  
-.project-card {
-  width: 100%;
-  max-width: 800px;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
-}
-  
-.project-card.active {
-  opacity: 1;
-  pointer-events: auto;
-  position: static; /* Change from relative to static */
-  transform: none;  /* Remove translateX(-50%) */
-}
-  
-  .works-link-wrapper {
-    display: block;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-  
-  .works-icon-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-  }
-  
-  .works-hover {
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .works-link-wrapper:hover .works-icon-wrapper {
-    opacity: 1;
-  }
-  
-  .project-image {
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-  
-  .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .works-link-wrapper:hover img {
-    transform: scale(1.05);
-  }
-  
-  .project-info {
-    padding: 20px 0;
-  }
-  
-  .project-title {
-    margin-bottom: 10px;
-    color: #fff;
-  }
-  
-  .tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
-  }
-  
-  .tag {
-    background-color: #222;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    color: #ccc;
-  }
 
 /* Mobile tweak */
 @media (max-width: 768px) {
@@ -1454,73 +1364,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Add these to your existing CSS */
-@keyframes expandFromCenter {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  70% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Apply animations to navbar elements */
-.nav-container {
-  overflow: hidden; /* Keeps animations contained */
-}
-
-.logo-wrapper {
-  animation: expandFromCenter 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-  transform-origin: center;
-}
-
-.nav-button-wrapper {
-  animation: slideInFromRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
-}
-
-.menu-button {
-  animation: slideInFromRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
-}
-
-/* Delay individual nav links for a staggered effect */
-.nav-link-wrapper {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.nav-link-wrapper:nth-child(1) { animation-delay: 0.4s; }
-.nav-link-wrapper:nth-child(2) { animation-delay: 0.5s; }
-.nav-link-wrapper:nth-child(3) { animation-delay: 0.6s; }
-.nav-link-wrapper:nth-child(4) { animation-delay: 0.7s; }
-.nav-link-wrapper:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
   </style>
 </head>
 
@@ -1534,43 +1377,45 @@
       
       <!-- Desktop Navigation -->
       <div class="nav-button-wrapper">
-        <nav class="nav-menu" aria-label="Main navigation">
+        <nav class="nav-menu">
           <div class="nav-link-wrapper">
-            <a href="#home" class="nav-link" aria-hidden="true">Home</a>
+            <a href="#home" class="nav-link">Home</a>
             <a href="#home" class="nav-link move-down hide-on-tab">Home</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#about" class="nav-link" aria-hidden="true">About</a>
+            <a href="#about" class="nav-link">About</a>
             <a href="#about" class="nav-link move-down hide-on-tab">About</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#services" class="nav-link" aria-hidden="true">Services</a>
+            <a href="#services" class="nav-link">Services</a>
             <a href="#services" class="nav-link move-down hide-on-tab">Services</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#projects" class="nav-link" aria-hidden="true">Projects</a>
-            <a href="#projects" class="nav-link move-down hide-on-tab">Projects</a>
+            <a href="#projects" class="nav-link">Project</a>
+            <a href="#projects" class="nav-link move-down hide-on-tab">Project</a>
           </div>
           <div class="nav-link-wrapper">
-            <a href="#contact" class="nav-link" aria-hidden="true">Contact</a>
+            <a href="#contact" class="nav-link">Contact</a>
             <a href="#contact" class="nav-link move-down hide-on-tab">Contact</a>
           </div>
         </nav>
       </div>
       
-      <!-- Mobile Menu -->
+      <!-- Mobile Menu (Only visible on mobile) -->
       <div class="menu-container">
-        <button class="menu-button" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Mobile menu button -->
+        <div class="menu-button">
           <div class="burger-icon"></div>
-        </button>
+        </div>
         
-        <nav class="mobile-nav-menu" aria-label="Mobile navigation">
+        <!-- Mobile navigation menu -->
+        <div class="mobile-nav-menu">
           <a href="#home" class="mobile-nav-link">Home</a>
           <a href="#about" class="mobile-nav-link">About</a>
           <a href="#services" class="mobile-nav-link">Services</a>
-          <a href="#projects" class="mobile-nav-link">Projects</a>
+          <a href="#projects" class="mobile-nav-link">Project</a>
           <a href="#contact" class="mobile-nav-link">Contact</a>
-        </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -1757,14 +1602,13 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
             
               <!-- Your existing project container -->
               <div class="projects-container">
-                <!-- Project 1 (Visible by default) -->
-                <div class="project-card active">
+                <div class="project-card">
                   <a href="#" class="works-link-wrapper">
                     <div class="works-icon-wrapper">
                       <div class="works-hover">View Project</div>
                     </div>
                     <div class="project-image">
-                      <img src="bill2.jpg" alt="Web Application Project">
+                      <img src="bill.jpg" alt="Board Mockup Project">
                     </div>
                   </a>
                   <div class="project-info">
@@ -1774,73 +1618,8 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
                       <div class="tag">Node.js</div>
                     </div>
                   </div>
-                  
-                </div>
-              
-                <!-- Project 2 (Hidden by default) -->
-                <div class="project-card">
-                  <a href="#" class="works-link-wrapper">
-                    <div class="works-icon-wrapper">
-                      <div class="works-hover">View Project</div>
-                    </div>
-                    <div class="project-image">
-                      <img src="bill.jpg" alt="E-commerce Platform">
-                    </div>
-                  </a>
-                  <div class="project-info">
-                    <h3 class="project-title">E-commerce Platform</h3>
-                    <div class="tag-container">
-                      <div class="tag">MongoDB</div>
-                      <div class="tag">Express</div>
-                      <div class="tag">React</div>
-                    </div>
-                  </div>
-                  
-                </div>
-              
-                <!-- Project 3 (Hidden by default) -->
-                <div class="project-card">
-                  <a href="#" class="works-link-wrapper">
-                    <div class="works-icon-wrapper">
-                      <div class="works-hover">View Project</div>
-                    </div>
-                    <div class="project-image">
-                      <img src="bill4.jpg" alt="Mobile App Integration">
-                    </div>
-                  </a>
-                  <div class="project-info">
-                    <h3 class="project-title">Mobile App Integration</h3>
-                    <div class="tag-container">
-                      <div class="tag">React Native</div>
-                      <div class="tag">Firebase</div>
-                      <div class="tag">Redux</div>
-                    </div>
-                  </div>
-                 
-                </div>
-              
-                <!-- Project 4 (Hidden by default) -->
-                <div class="project-card">
-                  <a href="#" class="works-link-wrapper">
-                    <div class="works-icon-wrapper">
-                      <div class="works-hover">View Project</div>
-                    </div>
-                    <div class="project-image">
-                      <img src="bill3.jpg" alt="Dashboard Analytics">
-                    </div>
-                  </a>
-                  <div class="project-info">
-                    <h3 class="project-title">Dashboard Analytics</h3>
-                    <div class="tag-container">
-                      <div class="tag">GraphQL</div>
-                      <div class="tag">D3.js</div>
-                      <div class="tag">TypeScript</div>
-                    </div>
-                  </div>
                 </div>
               </div>
-               
-                
             </section>
             
             <style>
@@ -1974,22 +1753,26 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
   </footer>
 
   <script>
+    // Animation on scroll
     document.addEventListener('DOMContentLoaded', function() {
-      // Scroll animation for sections
       const sections = document.querySelectorAll('.section');
       const animateOnScroll = () => {
         sections.forEach(section => {
           const sectionTop = section.getBoundingClientRect().top;
           const windowHeight = window.innerHeight;
-    
+          
           if (sectionTop < windowHeight - 100) {
             section.classList.add('animate');
           }
         });
       };
+
+      // Initial check
       animateOnScroll();
+
+      // Check on scroll
       window.addEventListener('scroll', animateOnScroll);
-    
+
       // Navbar scroll effect
       const navbar = document.querySelector('.navbar');
       window.addEventListener('scroll', () => {
@@ -1999,7 +1782,7 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
           navbar.classList.remove('scrolled');
         }
       });
-    
+
       // Brand grid animation
       const brandGrids = document.querySelectorAll('.brands-grid');
       brandGrids.forEach((grid, index) => {
@@ -2007,79 +1790,20 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
           grid.classList.add('animate');
         }, index * 200);
       });
-    
+
       // Works title animation
       const worksTitles = document.querySelectorAll('.works-title');
       let currentTitle = 0;
+      
       setInterval(() => {
         worksTitles.forEach(title => {
           title.style.transform = `translateY(-${currentTitle * 25}%)`;
         });
+        
         currentTitle = (currentTitle + 1) % 4;
       }, 2000);
-    
-      // Add ID to works section
-      const worksSection = document.querySelector('.background-black:not(#services):not(footer)');
-      if (worksSection) {
-        worksSection.id = 'works';
-      }
-    
-      // Update nav links
-      const navLinks = document.querySelectorAll('.nav-link:not(.move-down)');
-      navLinks.forEach(link => {
-        const text = link.textContent.toLowerCase().trim();
-        link.setAttribute('href', '#' + text);
-      });
-    
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    
-      // Intersection Observer animations
-      const animateElements = document.querySelectorAll('.slide-from-left-animation, .slide-from-right-animation, .slide-up-animation, .works-block, .metrics-block, .brands-grid, .reviews-slider, .cta-block, .footer-top, .footer-line, .footer-bottom, .project-card');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-      animateElements.forEach(el => observer.observe(el));
-    
-      // Project card logic
-      const projects = document.querySelectorAll('.project-card');
-      const nextButtons = document.querySelectorAll('.next-project-btn');
-      let currentIndex = 0;
-    
-      function showProject(index) {
-        projects.forEach(project => project.classList.remove('active'));
-        projects[index].classList.add('active');
-      }
-    
-      function nextProject() {
-        currentIndex = (currentIndex + 1) % projects.length;
-        showProject(currentIndex);
-      }
-    
-      nextButtons.forEach(button => button.addEventListener('click', nextProject));
-      showProject(0);
     });
-    </script>
-    
+  </script>
  
   
   <script>
@@ -2152,33 +1876,6 @@ document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
       observer.observe(element);
     });
   });
-  // Add this to your existing JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-  // Reset animations for elements that might be cached
-  const animatedElements = [
-    document.querySelector('.logo-wrapper'),
-    document.querySelector('.nav-button-wrapper'),
-    document.querySelector('.menu-button'),
-    ...document.querySelectorAll('.nav-link-wrapper')
-  ];
-  
-  // Trigger reflow to restart animations
-  animatedElements.forEach(el => {
-    if (el) {
-      el.style.animation = 'none';
-      void el.offsetWidth; // Trigger reflow
-      el.style.animation = '';
-    }
-  });
-  
-  // For mobile menu links (if you want them animated too)
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-  mobileLinks.forEach((link, index) => {
-    link.style.opacity = '0';
-    link.style.transform = 'translateY(20px)';
-    link.style.animation = `fadeInUp 0.5s ease-out ${0.4 + index * 0.1}s forwards`;
-  });
-});
 </script>
 <!-- your entire page content -->
   
