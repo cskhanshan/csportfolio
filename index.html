@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeeshan - Creative Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #000;
+      --secondary-color: #fff;
+      --accent-color: #555;
+      --gray-color: #f5f5f5;
+      --transition: all 0.4s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 6rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 4rem;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    h5 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .caps {
+      text-transform: uppercase;
+    }
+
+    /* Button Styles */
+    .button-with-circle-icon {
+  padding: 12px 24px;
+  border-radius: 10px;
+  background-color: var(--primary-color); /* or your theme color */
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+}
+.button-with-circle-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--primary-color); /* same color, just smoother pop */
+}
+
+   
+
+    .button-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .button-text-absolute {
+      position: absolute;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .button-with-circle-icon:hover .button-text {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .button-with-circle-icon:hover .button-text-absolute {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .button-light {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    
+
+    .arrow {
+      width: 16px;
+      height: 16px;
+      transition: var(--transition);
+    }
+
+    .invert {
+      filter: invert(1);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+    }
+    .nav-button-wrapper {
+  background-color: #000;        /* black fill */
+  border-radius: 3rem;           /* pill shape */
+  padding: 1rem 2rem;
+  display: inline-block;         /* fits content like a button */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* optional shadow */
+}
+.nav-link {
+  color: white !important; /* override any existing black color */
+}
+.nav-link:hover {
+  color: #aaa;
+}
+.logo-wrapper {
+  background-color: #000;
+  border-radius: 3rem;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  height: 40px;
+  display: block;
+}
+
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link-wrapper {
+      position: relative;
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 500;
+      display: block;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .move-down {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-link-wrapper:hover .nav-link {
+      transform: translateY(-30px);
+    }
+
+    .nav-link-wrapper:hover .move-down {
+      transform: translateY(-30px);
+    }
+
+    .menu-button {
+      display: none;
+      cursor: pointer;
+    }
+    
+    
+
+    .burger-icon::before,
+    .burger-icon::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    .menu-container {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: none;
+    /* rest of your mobile styles */
+  }
+
+  .mobile-nav.active {
+    display: flex;
+  }
+}
+
+    /* For small screens, make the navigation menu hidden by default */
+    @media screen and (max-width: 576px) {
+  .nav-button-wrapper {
+    display: none;
+  }
+
+  .menu-container {
+    display: block;
+    position: relative;
+  }
+
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 28px;
+    width: 76.14px;
+    height: 56px;
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+    transition:
+      border-radius 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .burger-icon {
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .burger-icon::before,
+  .burger-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    left: 0;
+    transition:
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      top 0.3s ease,
+      width 0.3s ease;
+  }
+
+  .burger-icon::before {
+    top: -7px;
+    transform-origin: left center;
+  }
+
+  .burger-icon::after {
+    top: 7px;
+    transform-origin: right center;
+  }
+
+  /* 🟢 Active State - Button & Icon */
+  .menu-button.active {
+    border-radius: 23px 23px 0 0;
+    width: 160px;
+    transform: translateY(2px);
+  }
+
+  .menu-button.active .burger-icon {
+    background-color: transparent; /* Keep element visible */
+  }
+
+  .menu-button.active .burger-icon::before {
+    transform: rotate(-45deg) scaleX(0.85) translate(4px, 1px);
+    top: 0;
+    width: 22px;
+  }
+
+  .menu-button.active .burger-icon::after {
+    transform: rotate(45deg) scaleX(0.85) translate(-4px, 1px);
+    top: 0;
+    width: 22px;
+  }
+
+  /* Menu Panel */
+  .mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
+    background-color: #000;
+    border-radius: 0 0 23px 23px;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: translateY(-10px) scaleY(0.95);
+    opacity: 0;
+    transition: 
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      opacity 0.3s ease,
+      visibility 0s linear;
+
+    visibility: hidden;
+    z-index: 1000;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav-menu.active {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      opacity 0.3s ease,
+      visibility 0s linear;
+  }
+
+  /* Menu Links */
+  .mobile-nav-link {
+    color: white !important;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+
+  .mobile-nav-menu.active .mobile-nav-link {
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      opacity 0.3s ease;
+    transition-delay: calc(0.05s * var(--i));
+  }
+
+  .mobile-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+
+
+      
+    /* Hero Section */
+    .hero-section {
+      height: 100vh;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+    }
+
+    .hero-wrapper {
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Stays above the overlay */
+  color: #000;
+}
+
+    .hero-text {
+      font-size: 10rem;
+      margin-bottom: 2rem;
+      
+    }
+
+    
+
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+    }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      filter: invert(1);
+      transform: rotate(90deg);
+      transition: var(--transition);
+    }
+
+    
+
+    .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: -1; /* Stays behind content */
+}
+
+    /* Brands Section */
+    .brands-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .brands-grid.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .logos-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .logos-wrapper img {
+      max-height: 60px;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .logos-wrapper:hover img {
+      opacity: 1;
+    }
+
+    /* Services Section */
+/* Services Section Styles */
+#services {
+  padding: 6rem 0;
+  background-color: #000;
+}
+
+.services-header {
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: #111;
+  padding: 2.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.service-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.service-description {
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .section-title {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 4rem;
+    word-break: break-word;
+    text-align: center;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+  }
+}
+    /* Works Section */
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Container styles */
+        
+        /* Utilities */
+        .padding-1rem {
+            padding: 1rem;
+        }
+        
+        .space-4rem {
+            height: 4rem;
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Variables */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Works Title Animation */
+        .works-title-wrapper {
+            position: relative;
+            height: 20vh;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .sliding-text-container {
+            width: 300%;
+            display: flex;
+            position: absolute;
+            animation: slideText 20s linear infinite;
+        }
+        
+        @keyframes slideText {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .works-title {
+            font-size: 12rem;
+            white-space: nowrap;
+            margin-right: 2rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        
+        .outline-white {
+            -webkit-text-stroke: 2px white;
+            color: transparent;
+        }
+        
+        /* Projects Section */
+        .background-black {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
+        }
+        
+        .projects-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem; /* Reduced side padding for small screens */
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+    .projects-container {
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+}
+
+        
+        .project-card {
+            background-color: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 60%;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        
+        .project-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-info {
+            padding: 2rem;
+            text-align: left;
+        }
+        
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .tag-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            padding: 0.5rem 1.5rem;
+            background-color: #222;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* View all button */
+        .button-with-circle-icon {
+            display: inline-flex;
+            align-items: center;
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .button-text {
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .button-text-absolute {
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            transform: translateY(100%);
+            opacity: 0;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+       
+        
+        .arrow {
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: var(--transition);
+        }
+        
+        .button-with-circle-icon:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+        
+        .button-with-circle-icon:hover .button-text {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .button-with-circle-icon:hover .button-text-absolute {
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+        
+        
+        
+        .button-with-circle-icon:hover .arrow {
+            filter: invert(1);
+        }
+        .project-header {
+  height: 150px;
+  margin-bottom: 40px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-box {
+  background: #fff;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-content {
+  display: flex;
+  animation: scrollText 30s linear infinite;
+}
+
+.scroll-content span {
+  font-size: 4.5rem; /* was 3rem */
+  font-weight: 900;
+  color: #000;
+  padding: 0 40px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+@keyframes scrollText {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3%); }
+}
+@media (max-width: 768px) {
+  .scroll-content span {
+    font-size: 2.5rem;
+    padding: 0 20px;
+  }
+
+  .scroll-box {
+    padding: 0.8rem 1.2rem;
+    border-radius: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-content span {
+    font-size: 1.8rem;
+    padding: 0 12px;
+  }
+
+  .scroll-box {
+    padding: 0.6rem 1rem;
+    border-radius: 1.5rem;
+  }
+}
+
+
+        /* Project hover effects */
+        .works-link-wrapper {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .works-icon-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 2;
+        }
+        
+        .works-hover {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .works-link-wrapper:hover .works-icon-wrapper {
+            opacity: 1;
+        }
+        
+        .works-link-wrapper:hover .works-hover {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .works-link-wrapper:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .works-title {
+                font-size: 10rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .works-title {
+                font-size: 8rem;
+            }
+            
+            .works-title-wrapper {
+                height: 15vh;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .works-title {
+                font-size: 6rem;
+            }
+            
+            .works-title-wrapper {
+                height: 12vh;
+            }
+            
+            .project-image {
+                padding-bottom: 70%;
+            }
+            
+            .project-info {
+                padding: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .works-title {
+                font-size: 4rem;
+            }
+            
+            .works-title-wrapper {
+                height: 10vh;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+            }
+            
+            .tag {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+
+    /* Metrics Section */
+
+    /* CTA Section */
+    .cta-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .cta-block.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+    }
+
+    .cta-large {
+      font-size: 5rem;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .outline-white {
+      -webkit-text-stroke: 1px black;
+      color: transparent;
+    }
+
+    .arrow-image-small {
+      width: 40px;
+      height: 40px;
+      margin-left: 1rem;
+    }
+
+    /* Footer Section */
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      padding: 4rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .footer-top.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-block {
+      max-width: 300px;
+    }
+
+    .footer-logo {
+      height: 40px;
+      margin-bottom: 2rem;
+    }
+    /* Glowing/Pulsing Animation */
+.pulse-glow {
+  fill: #ffffff;
+  animation: gentleGlow 3s infinite ease-in-out;
+  opacity: 0.8; /* Starting opacity */
+}
+
+@keyframes gentleGlow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  }
+}
+
+/* Optional: Add a delay to the GitHub icon for a wave effect */
+.socials-wrapper a:nth-child(2) .pulse-glow {
+  animation-delay: 0.5s;
+}
+    .socials-wrapper {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      opacity: 1;
+    }
+
+    .footer-right-flex {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-wrapper {
+      min-width: 100px;
+    }
+
+    .font-white {
+      color: var(--secondary-color);
+    }
+
+    .footer-link-wrapper {
+      position: relative;
+      height: 30px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .footer-link {
+      text-decoration: none;
+      color: var(--secondary-color);
+      opacity: 0.7;
+      display: block;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .footer-link-wrapper:hover .footer-link {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+
+    .footer-link-wrapper:hover .move-down {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+
+    .footer-line {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin: 2rem 0;
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .footer-line.animate {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .footer-bottom.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-flex {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-flex-bottom {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom-text {
+      color: var(--secondary-color);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-text:hover {
+      opacity: 1;
+    }
+    
+
+    /* Spacing Utilities */
+    .space-7rem {
+      height: 7rem;
+    }
+
+    .space-4rem {
+      height: 4rem;
+    }
+
+    .space-2rem {
+      height: 2rem;
+    }
+
+    .padding-4-5rem {
+      padding: 4.5rem 0;
+    }
+
+    .padding-9rem {
+      padding: 9rem 0;
+    }
+
+    .max-width-19vw {
+      max-width: 19vw;
+    }
+
+    .self-align-left {
+      text-align: left;
+    }
+    .services-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Added for better responsiveness */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .services-flex {
+    gap: 2rem;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .services-flex .services-wrapper {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+.services-wrapper {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from growing beyond container */
+  text-align: center;
+}
+
+    /* Media Queries */
+    @media (max-width: 991px) {
+      h1 {
+        font-size: 4rem;
+      }
+      
+      h2 {
+        font-size: 3rem;
+      }
+      
+      .hero-text {
+        font-size: 6rem;
+      }
+      
+      .services-flex {
+        flex-direction: column;
+      }
+      
+      .works-title {
+        font-size: 5rem;
+      }
+      
+      
+      
+      .cta-large {
+        font-size: 3.5rem;
+      }
+      
+      .footer-right-flex {
+        gap: 2rem;
+      }
+      
+      .max-width-19vw {
+        max-width: 100%;
+      }
+      
+      .hide-on-tab {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .cta-block {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .footer-top {
+        flex-direction: column;
+        gap: 3rem;
+      }
+      
+      .footer-right-flex {
+        flex-wrap: wrap;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 479px) {
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-text {
+        font-size: 4rem;
+      }
+      
+      .works-title {
+        font-size: 3rem;
+      }
+    }
+    
+    /* Animation effect for scrolling */
+    .section {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    
+    .section.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Slide Animation */
+    .slide-up-animation {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .slide-up-animation.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="navbar">
+    <div class="nav-container container">
+      <a href="/" class="logo-link-wrapper logo-wrapper">
+        <img src="shan.png" alt="logo" class="logo">
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="nav-button-wrapper">
+        <nav class="nav-menu">
+          <div class="nav-link-wrapper">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#home" class="nav-link move-down hide-on-tab">Home</a>
+          </div>
+          <div class="nav-link-wrapper">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#about" class="nav-link move-down hide-on-tab">About</a>
+          </div>
+          <div class="nav-link-wrapper">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#services" class="nav-link move-down hide-on-tab">Services</a>
+          </div>
+          <div class="nav-link-wrapper">
+            <a href="#projects" class="nav-link">Project</a>
+            <a href="#projects" class="nav-link move-down hide-on-tab">Project</a>
+          </div>
+          <div class="nav-link-wrapper">
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#contact" class="nav-link move-down hide-on-tab">Contact</a>
+          </div>
+        </nav>
+      </div>
+      
+      <!-- Mobile Menu (Only visible on mobile) -->
+      <div class="menu-container">
+        <!-- Mobile menu button -->
+        <div class="menu-button">
+          <div class="burger-icon"></div>
+        </div>
+        
+        <!-- Mobile navigation menu -->
+        <div class="mobile-nav-menu">
+          <a href="#home" class="mobile-nav-link">Home</a>
+          <a href="#about" class="mobile-nav-link">About</a>
+          <a href="#services" class="mobile-nav-link">Services</a>
+          <a href="#projects" class="mobile-nav-link">Project</a>
+          <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const menuButton = document.querySelector('.menu-button');
+  const mobileMenu = document.querySelector('.mobile-nav-menu');
+  
+  // Toggle menu
+  menuButton.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menuButton.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+  
+  // Close when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!menuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+      menuButton.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+  
+  // Close when clicking a link
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', function () {
+      menuButton.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+  
+  // Close with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      menuButton.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+  
+  // Close when scrolling
+  window.addEventListener('scroll', function () {
+    if (menuButton.classList.contains('active')) {
+      menuButton.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+});
+// Add this after your existing JavaScript
+document.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
+  link.style.setProperty('--i', index);
+});
+  </script>
+  
+  
+  
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-wrapper">
+        <h5>Muhammad Zeeshan Khan Mehsud</h5>
+        <h1 class="hero-text">Full Stack</h1>
+        <h1 class="hero-text">Developer</h1>
+      </div>
+      <div class="hero-overlay"></div>
+    </div>
+  </section>
+  
+
+
+  <section id="about" class="section">
+    <div class="container">
+      <div class="space-7rem"></div>
+      <div class="services-flex">
+        <div class="services-wrapper slide-from-left-animation">
+          <div class="services-header" style="margin-bottom: 3rem; text-align: left;">
+            <h2 class="section-title">ABOUT ME</h2>
+          </div>
+  
+          <p class="service-description" style="max-width: 30rem; margin-bottom: 2rem;">
+            I'm a Full Stack Developer with a strong background in Computer Science. 
+            I enjoy building responsive, scalable web applications from scratch handling 
+            everything from designing clean front-end interfaces to implementing powerful 
+            back-end logic. Passionate about learning and problem-solving, I always aim 
+            to deliver smooth, user-friendly digital experiences.
+          </p>
+  
+          <div class="service-description" style="max-width: 30rem; margin-bottom: 2rem;">
+            <strong>Languages:</strong><br>
+            JavaScript, Python, C++<br><br>
+            <strong>Frameworks & Tools:</strong><br>
+            React, Node.js, Express, MongoDB, Tailwind CSS, Git, GitHub, REST APIs
+          </div>
+  
+          <div class="space-2rem"></div>
+          <a href="#" class="button-with-circle-icon button-light">
+            <span class="button-text">more about me</span>
+            <span class="button-text-absolute"></span>
+            
+          </a>
+        </div>
+  
+        <div class="services-wrapper slide-from-right-animation">
+          <img src="shan.png" alt="profile photo" style="border-radius: 12px; width: 100%; height: auto; max-width: 500px;">
+        </div>
+      </div>
+      <div class="space-7rem"></div>
+    </div>
+  </section>
+  
+  
+
+
+
+  <!-- Brands Section -->
+
+
+  <!-- Services Section -->
+<!-- Services Section -->
+            <section class="section" id="services">
+              <div class="container">
+                <div class="services-header">
+                  <h2 class="section-title">SERVICES</h2>
+                </div>
+                
+                <div class="services-grid">
+                  <!-- Top Row -->
+                  <div class="service-card">
+                    <div class="service-icon">
+                      <img src="/images/serivces-img/service-1.jpg" alt="branding icon">
+                    </div>
+                    <h3 class="service-title">Full-Stack Development</h3>
+                    <p class="service-description">Complete web applications with React frontends and Node.js backends. MongoDB database integration.</p>
+                  </div>
+                  
+                  <div class="service-card">
+                    <div class="service-icon">
+                      <img src="/images/serivces-img/service-2.jpg" alt="development icon">
+                    </div>
+                    <h3 class="service-title">UI/UX Implementation</h3>
+                    <p class="service-description">Responsive interfaces with optimized performance. Accessibility-focused designs for all devices.</p>
+                  </div>
+                  
+                  <!-- Bottom Row -->
+                  <div class="service-card">
+                    <div class="service-icon">
+                      <img src="/images/serivces-img/service-4.jpg" alt="marketing icon">
+                    </div>
+                    <h3 class="service-title">Backend API Services</h3>
+                    <p class="service-description">Secure RESTful APIs with JWT authentication. Cloud deployment on AWS/DigitalOcean.</p>
+                  </div>
+                  
+                  <div class="service-card">
+                    <div class="service-icon">
+                      <img src="/images/serivces-img/service-3.jpg" alt="design icon">
+                    </div>
+                    <h3 class="service-title">DevOps Automation</h3>
+                    <p class="service-description">CI/CD pipelines with Docker containers. Automated testing and deployment workflows.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+  <!-- Works Section -->
+  
+            
+            <!-- Featured Project -->
+            <section id="projects" class="project">
+
+              <!-- Animated Projects Header -->
+              <div class="project-header">
+                <div class="scroll-box">
+                  <div class="scroll-content">
+                    <span>MY PROJECTS</span>
+                    <span>MY PROJECTS</span>
+                    <span>MY PROJECTS</span>
+                    <span>MY PROJECTS</span>
+                  </div>
+                </div>
+              </div>
+              
+
+              
+            
+              <!-- Your existing project container -->
+              <div class="projects-container">
+                <div class="project-card">
+                  <a href="#" class="works-link-wrapper">
+                    <div class="works-icon-wrapper">
+                      <div class="works-hover">View Project</div>
+                    </div>
+                    <div class="project-image">
+                      <img src="/images/project-img/ui-ux.jpg" alt="Board Mockup Project">
+                    </div>
+                  </a>
+                  <div class="project-info">
+                    <h3 class="project-title">Web Application</h3>
+                    <div class="tag-container">
+                      <div class="tag">React</div>
+                      <div class="tag">Node.js</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            <style>
+              @keyframes scrollText {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-100% / 3)); }
+              }
+            </style>
+          
+          <div class="space-4rem"></div>
+          
+          <!-- View All Button -->
+
+  <!-- Metrics Section -->
+  
+
+  <!-- Reviews Section -->
+
+
+  <!-- CTA Section -->
+  <section id="contact" class="section">
+    <div class="container padding-4-5rem">
+      <div class="cta-block" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <h2 class="cta-large">Let's Work <br>Together</h2>
+        <a href="#" class="button-with-circle-icon" style="margin-top: 1.5rem;">
+          <span class="button-text">Get In Touch</span>
+          <span class="button-text-absolute">Get In Touch</span>
+          
+        </a>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Footer Section -->
+  <footer class="section background-black">
+    <div class="container padding-2rem">
+      <div class="footer-top">
+        <div class="footer-block">
+          <a href="/" class="logo-link-wrapper logo-wrapper" style="background-color: white; border-radius: 3rem; padding: 0.5rem 1rem; display: inline-block; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+            <img src="shan.png" alt="logo" class="logo" style="height: 40px; display: block;">
+          </a>
+          <p class="font-white">I design and build digital experiences, 
+            feel free to reach out for collaborations or just for consultation</p>
+            <div class="socials-wrapper">
+              <a href="https://www.linkedin.com/in/zeeshan-khan-mehsud-6a84b9242/" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon pulse-glow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://github.com/cskhanshan" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon pulse-glow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+              </a>
+            </div>
+        </div>
+        <div class="footer-right-flex">
+          <div class="footer-wrapper">
+            <h5 class="font-white">Menu</h5>
+            <div class="footer-link-wrapper">
+              <a href="#home" class="footer-link">Home</a>
+              <a href="#home" class="footer-link move-up">Home</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#about" class="footer-link">About</a>
+              <a href="#about" class="footer-link move-up">About</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#services" class="footer-link">Services</a>
+              <a href="#services" class="footer-link move-up">Services</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#projects" class="footer-link">Project</a>
+              <a href="#projects" class="footer-link move-up">Project</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#contact" class="footer-link">Contact</a>
+              <a href="#contact" class="footer-link move-up">Contact</a>
+            </div>
+          </div>
+          <div class="footer-wrapper">
+            <h5 class="font-white">Services</h5>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">Full-Stack Development</a>
+              <a href="#" class="footer-link move-up">Full-Stack Development</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">Backend API Services</a>
+              <a href="#" class="footer-link move-up">Backend API Services</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">UI/UX Implementation</a>
+              <a href="#" class="footer-link move-up">UI/UX Implementation</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">DevOps Automation</a>
+              <a href="#" class="footer-link move-up">DevOps Automation</a>
+            </div>
+          </div>
+          <div class="footer-wrapper">
+            <h5 class="font-white">Contact</h5>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">bloody123mouse@gmail.com</a>
+              <a href="mailto:bloody123mouse@gmail.com" class="footer-link move-up">bloody123mouse@gmail.com</a>
+            </div>
+            <div class="footer-link-wrapper">
+              <a href="#" class="footer-link">+92 31227500 69</a>
+              <a 
+  href="https://wa.me/923122750069" 
+  class="footer-link move-up"
+  target="_blank"
+>
+  +92 312 2750069
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-line"></div>
+      <div class="footer-bottom">
+        <div class="footer-flex-bottom">
+          <a href="#" class="footer-bottom-text">Privacy Policy</a>
+          
+          <a href="#" class="footer-bottom-text">Terms of Service</a>
+          <a href="#" class="footer-bottom-text">Cookies Settings</a>
+        </div>
+        <p class="footer-bottom-text">© 2025 Zeeshan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section');
+      const animateOnScroll = () => {
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (sectionTop < windowHeight - 100) {
+            section.classList.add('animate');
+          }
+        });
+      };
+
+      // Initial check
+      animateOnScroll();
+
+      // Check on scroll
+      window.addEventListener('scroll', animateOnScroll);
+
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Brand grid animation
+      const brandGrids = document.querySelectorAll('.brands-grid');
+      brandGrids.forEach((grid, index) => {
+        setTimeout(() => {
+          grid.classList.add('animate');
+        }, index * 200);
+      });
+
+      // Works title animation
+      const worksTitles = document.querySelectorAll('.works-title');
+      let currentTitle = 0;
+      
+      setInterval(() => {
+        worksTitles.forEach(title => {
+          title.style.transform = `translateY(-${currentTitle * 25}%)`;
+        });
+        
+        currentTitle = (currentTitle + 1) % 4;
+      }, 2000);
+    });
+  </script>
+ 
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Optional: Add scroll animations if needed
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.project-card').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+  <script>
+  // Navigation updates
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add ID to the works section for proper navigation
+    const worksSection = document.querySelector('.background-black:not(#services):not(footer)');
+    if (worksSection) {
+      worksSection.id = 'works';
+    }
+    
+    // Update navigation links with proper href attributes
+    const navLinks = document.querySelectorAll('.nav-link:not(.move-down)');
+    navLinks.forEach(link => {
+      const text = link.textContent.toLowerCase().trim();
+      link.setAttribute('href', '#' + text);
+    });
+    
+    // Smooth scroll functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for navbar height
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Enhanced animation for sections
+    const animateElements = document.querySelectorAll('.slide-from-left-animation, .slide-from-right-animation, .slide-up-animation, .works-block, .metrics-block, .brands-grid, .reviews-slider, .cta-block, .footer-top, .footer-line, .footer-bottom');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
+<!-- your entire page content -->
+  
+  
+</body>
+
+</html>
